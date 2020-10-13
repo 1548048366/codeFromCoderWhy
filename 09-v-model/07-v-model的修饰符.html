@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+<!-- 1. lazy 当我们不需要每一次的事件都被获取的时候，使用lazy修饰符，可以在失去焦点或者回车时，才被获取 -->
+<input type="text" v-model.lazy="message">
+<h2>{{message}}</h2>
+<!-- 2. number 当我们希望input内只允许输入数字时，或者其数据类型为number的话，就可以用这个修饰符 -->
+<input type="number" v-model.number="age">
+<h2>{{typeof age}}</h2>
+
+<!-- 3. trim 当我们不需要input的内容最右边和最左边出现空格的时候，可以使用 -->
+<input type="text" v-model.trim="name">
+<h2>您输入的名字为：{{name}}</h2>
+</div>
+
+
+<script src="../vue/vue.js"></script>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      message:'adc',
+      age:'',
+      name: ''
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <!-- 这里判断true 或者 false是在第一个v-if判断的需要注意的是，v-if 和 v-else 需要是在同个父节点下
+  不能在不同的节点下发挥作用 -->
+  <h2 v-if="isShow">{{message}}</h2>
+  <h2 v-else>{{information}}</h2>
+</div>
+
+
+<script src="../vue/vue.js"></script>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      message: 'hello there',
+      information: 'hello prety'
+    },
+    methods: {
+    
+    }
+  })
+</script>
+</body>
+</html>

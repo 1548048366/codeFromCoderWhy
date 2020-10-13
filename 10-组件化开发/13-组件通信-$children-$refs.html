@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn ref="abc"></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <h2>{{message}}</h2>
+    <h2>{{message}}</h2>
+    <h2>{{message}}</h2>
+    <h2>{{message}}</h2>
+    <button @click="btnClick">按钮</button>
+  </div>
+  
+  <template id="cpn">
+    <div>
+      <h2>子组件中的name：{{height}}</h2>
+    </div>
+  </template>
+
+  <script src="../vue/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        message: '现在是vm中的data数据'
+      },
+      methods: {
+        btnClick() {
+          for(let m of this.$children){
+            this.message = m.name
+            m.showMessage();
+          }
+          // console.log(this.this.$refs)
+          // $refs 默认是一个空的对象，需要我们在组件上手动绑定一个可识别的名称
+          console.log(this.$refs.abc.name)
+
+
+          console.log(this.$children[0])
+          console.log('btnClick')
+        }
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data () {
+            return {
+              name: 'wql',
+              height: 185,
+              age: 18
+            }
+          },
+          methods: {
+            showMessage() {
+              console.log(this.name)
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    1. 插槽的基本使用
+    2. 插槽的默认值的使用
+    3. 在添加插槽标签后，如果我们使用多个插件，那么将会对原有元素进行替换
+   -->
+  <div id="app">
+    <cpn><button>btn</button>
+    <button>anli</button></cpn>
+    <cpn>
+      <p>老夫是插槽</p>
+    </cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+  </div>
+  
+  <template id="cpn">
+    <div>
+      <h2>我是组件</h2>
+      <p>老夫也是组件</p>
+      <slot></slot>
+    </div>
+  </template>
+  
+  <script src="../vue/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+   
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <cpn1></cpn1>
+</div>
+<template id="cpn1">
+  <div>
+    <h2>{{title}}</h2>
+    <p>我是内容，哇哈哈哈</p>
+  </div>
+</template>
+<script src="../vue/vue.js"></script>
+<script>
+  Vue.component('cpn1',{
+    template: '#cpn1',
+    // 数据存放在data函数里，并且必须return 一个对象，才能放到组件里面
+    data(){
+      return {
+        title: '我是标题'
+      }
+    }
+  })
+
+  const vm = new Vue({
+    el: "#app",
+    data: {
+
+    }
+  })
+</script>
+</body>
+</html>

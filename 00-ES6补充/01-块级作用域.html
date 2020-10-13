@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>1</button>
+  <button>2</button>
+  <button>3</button>
+  <button>4</button>
+  <button>5</button>
+  <script>
+    // 因为ES5没有作用域的概念，所以在使用if和for的时候需要借助function的作用域来解决外来应用变量的问题。
+    // ES6 中添加了let，let它是有if和for的作用域的
+
+    // 1.变量作用域，变量在什么范围内是可用的；这里的name是同一个name，所以{}是没有作用域的
+    // {  
+    //   var name = 'vue';
+    //   console.log(name)
+    // }
+    // console.log(name);
+
+    // 2.没有块级作用域引起的问题：if的块级
+    // var func;
+    // if(true) {
+    //   var name = 'kobe';
+    //   func = function() {
+    //     console.log(name);
+    //   }
+    //   func();
+    // }
+    // name = 'Lebron';
+    // func();
+    // console.log(name);
+
+    // 3.没有作用域引起的问题：for的块级
+      // const btn = document.getElementsByTagName('button');
+      // for(var i=0; i<btn.length; i++){
+      //   btn[i].addEventListener('click',function(){
+      //     console.log('第' + i + '按钮被点击了');
+      //   })
+      // }//这里是失败的
+
+      // const btn = document.getElementsByTagName('button');
+      // for(let i=0; i<btn.length; i++){
+      //   btn[i].addEventListener('click',function(){
+      //     console.log('第' + i + '按钮被点击了');
+      //   })
+      // }// 这里是成功的
+      // 在ES5中，由于i没有自己的作用域，因此当我们点击按钮出现的i都会是5
+      // 而在ES6中定义的let 使得 i 有了自己的定义域，那么，无论外面的数字怎么变，我们得到的i都只会是轮到自己的i
+  </script>
+</body>
+</html>

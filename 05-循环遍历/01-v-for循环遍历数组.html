@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <!-- 最简单的一种用法，只是循环遍历，没有用到索引值 -->
+  <h2 v-for="item in message">{{item}}</h2>
+  <!-- 使用到索引的方法 -->
+  <ul>
+    <li v-for="(item, index) in message">{{index + 1}}.{{item}}</li>
+  </ul>
+</div>
+
+
+<script src="../vue/vue.js"></script>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      message: ['kobe','edEheern','coldplay','chainSmoker']
+    }
+  })
+</script>
+</body>
+</html>

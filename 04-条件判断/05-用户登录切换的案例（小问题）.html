@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <!-- 问题描述：当我们在文本框内输入了一些东西，我们点击切换后，内容并没有消失 -->
+  <!-- 问题原因：由于vue在渲染dom的时候其实并没有直接将我们的元素渲染到html上，
+       在这个过程中，会有一个虚拟dom的存在，当我们要渲染的dom存在互斥性的时候，会将true的那个
+       dom的除type之外直接改成另一个的属性，因此，本质上他其实并没有变。因此，内容不会消失 -->
+  <!-- 解决问题：打上 key 来标识 -->
+  <span v-if="isUser">
+    <label for="userName">用户类型</label>
+    <input type="text" id="userName" placeholder="用户类型" key="username">
+  </span>
+  <span v-else>
+    <label for="emilName">邮箱类型</label>
+    <input type="text" id="emilName" placeholder="邮箱类型" key="email">
+  </span>
+  <button @click="isUser = !isUser">类型切换</button>
+</div>
+
+
+<script src="../vue/vue.js"></script>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      // 啊西八，记住啊，对象里面一定要是冒号“ : ” 千万不能是 “ = ”
+      isUser: true,
+    },
+
+  })
+</script>
+</body>
+</html>

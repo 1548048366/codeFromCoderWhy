@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <!-- 遍历对象时，语法和遍历数组很像，但是只有一个的时候，获取到的item为value -->
+    <li v-for="item in info">{{item}}</li>
+  </ul>
+  <!-- 在遍历对象中，和数组不一样，index会变成key,而item存储的是value的值 -->
+  <ul>
+    <li v-for="(value, key) in info">{{key}}:{{value}}</li>
+  </ul>
+  <!-- 遍历对象时，也可以获取到index的值，但是会放在第三个位置 -->
+  <ul>
+    <li v-for="(value, key, index) in info">{{index+1}}.{{key}}: {{value}}</li>
+  </ul>
+</div>
+
+
+<script src="../vue/vue.js"></script>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      info: {
+        name: 'coldpaly',
+        job: 'musicBand',
+        bornPleace: 'USA'
+      }
+    }
+  })
+</script>
+</body>
+</html>

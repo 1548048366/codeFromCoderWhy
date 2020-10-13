@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    // 注意一： const常量被定义并赋值以后，它的值是不可更改的
+    // const name = '张三';
+    // name = '李四';
+    // console.log(name);
+
+    //注意二： const常量在定义的时候，必须在定义时就立刻赋值
+    //const name;// 这样是错误的
+     
+    // 注意三： const常量虽然不能更改，但是const定义的对象内的属性却是可以更改的。
+    const person =  {
+      name: 'wql',
+      age: '18',
+      height: '1.85',
+    };
+    console.log(person);
+    // 修改后的样子
+    person.name = 'kobe';
+    person.age= '40';
+    person.height= '1.92';
+    console.log(person);
+    
+  </script>
+</body>
+</html>

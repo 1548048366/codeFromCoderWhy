@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <!-- 其实在日常开发中，不会经常使用这个指令，我们一般都是通过计算属性来做出一些逻辑
+  判断。 -->
+  <!-- <h2 v-if="score > 90">{{score3}}</h2>
+  <h2 v-else-if="score > 80">{{score2}}</h2>
+  <h2 v-else-if="score > 60">{{score1}}</h2>
+  <h2 v-else>{{score4}}</h2> -->
+
+  <!-- 计算属性写法 -->
+  <input @keyup="newScore()" ref="input1" type="text">
+  <h2>{{showLev}}</h2>
+</div>
+
+
+<script src="../vue/vue.js"></script>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      score1: '及格',
+      score2: '良好',
+      score3: '优秀',
+      score4: '差评',
+      score: 78
+    },
+    methods: {
+      newScore() {
+        // NaN只是一个数据类型，所以无法用它直接来判断。
+        //如果我们需要判断一个value是否为一个数字时，我们可以使用函数 isNaN 来判断
+        // console.log(this.$refs.input1.value);
+        if(isNaN(this.$refs.input1.value)){
+          alert("请输入1~100内的数字");
+        } else if(this.$refs.input1.value < 0 || this.$refs.input1.value >100){
+          alert("请输入1~100内的数字");
+        } else{
+          this.score = this.$refs.input1.value;
+        }
+      }
+    },
+    computed: {
+      showLev() {
+        if(this.score >= 90){
+          return this.score3;
+        } else if(this.score >= 80){
+          return this.score2;
+        } else if(this.score >= 60) {
+          return this.score1;
+        }else {
+          return this.score4;
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

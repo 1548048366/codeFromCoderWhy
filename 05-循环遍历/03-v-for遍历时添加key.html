@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <!-- 如果不添加key的话，那么由于diff算法的原因，vue在对数组元素进行操作的时候会采用不叫笨的做法
+        数组内部的index值会一个个对应到现在的顺序上，也就是除了，安插元素的前面的元素不变之外，其他的元素的索引值都要
+      改变，这样内存的消耗会增大很多 -->
+    <!-- <li v-for="item in letters">{{item}}</li> -->
+
+    <!-- 绑定的key的属性值最好是独一无二的，这样方便vue内部进行识别，在虚拟dom内部操作的时候，就不会出现
+         为对应元素重新赋值的问题 -->
+    <li v-for="item in letters" :key="item">{{item}}</li>
+    <button @click="btnClick">按钮</button>
+  </ul>
+</div>
+
+
+<script src="../vue/vue.js"></script>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      letters: ['A', 'B', 'C', 'D', 'E'],
+    },
+    methods: {
+      btnClick() {
+        this.letters.splice(3,1,'F');
+      }
+    },
+  })
+  
+</script>
+</body>
+</html>

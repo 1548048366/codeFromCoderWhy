@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="item in letters">{{item}}</li>
+  </ul>
+  <button @click="btnClick">按钮</button>
+</div>
+
+
+<script src="../vue/vue.js"></script>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      letters:['a','b','c','d','e']
+    },
+    methods: {
+      btnClick() {
+        //1. push方法；可以添加多个数值
+        // this.letters.push('aaaa');
+       
+        //2. pop();删除数组最后一个元素
+        // this.letters.pop();
+        //3. shift();删除数组第一个元素
+        // this.letters.shift();
+        //4. unshift();从数组最前面开始添加元素；unshift传入的参数会被存入到一个数组里面，因此，
+        // 它可以传入很多的参数；unshift(...Arrays: T[]);...Arrays语法结构，T[]在TypeScript中表示泛型
+        // this.letters.unshift("aaa")
+
+        //5. splice();能做到删除/插入/替换等系列的操作
+        // splice(start, 删除几个元素, value)
+        // this.letters.splice(3,0,'F')
+        
+        //6. sort();排序方法;
+        // this.letters.sort();
+        //7. reverse();按照数组排列顺序反转;
+        // this.letters.reverse();
+
+
+        // 这个是最重要的*****
+         //* 直接对数组的某一元素赋值，是无法做到直接响应的
+        // this.letters[index] = 'xxxx'; // 是无法响应式的，但是可以添加到数组内
+
+        //vue 提供的修改数组参数的方法；
+        //Vue.set();
+        //set(要修改的数组，索引值，修改内容)
+        Vue.set(this.letters, 0, 'A');
+      }
+    }
+  })
+</script>
+</body>
+</html>

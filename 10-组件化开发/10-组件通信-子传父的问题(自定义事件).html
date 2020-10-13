@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <cpn @itemclick="cpnClick"></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <button v-for="item in catograies" @click="btnClick(item)">{{item.name}}</button>
+  </div>
+</template>
+<script src="../vue/vue.js"></script>
+<script>
+
+  const cpn = {
+    template: '#cpn',
+    data(){
+      return{
+        catograies: [
+          {id:"1111",name:"衣物用品"},
+          {id:"2222",name:"电脑办公"},
+          {id:"3333",name:"婴幼商品"},
+          {id:"4444",name:"超市厂货"},
+          {id:"5555",name:"交流广场"},
+        ]
+      }
+    },
+    methods: {
+      btnClick(item) {
+        // 发射事件： 自定义事件
+        console.log(item);
+        this.$emit('itemclick')
+      }
+    }
+  }
+  const vm = new Vue({
+    el: "#app",
+    data: {
+ 
+    },
+    components: {
+      cpn
+    },
+    methods : {
+      cpnClick() {
+        console.log('cpnclick')
+      }
+    }
+  })
+</script>
+</body>
+</html>

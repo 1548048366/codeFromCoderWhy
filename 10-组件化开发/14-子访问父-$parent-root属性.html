@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <cpn></cpn>
+   
+  </div>
+  
+  <template id="cpn">
+    <div>
+      <h2>我是子组件</h2>
+      <button @click="btnClick">butten</button>
+      <ccpn></ccpn>
+    </div>
+  </template>
+  <template id="ccpn">
+    <div>
+      <h2>我是子子组件</h2>
+      <button @click="cbtnClick">按钮</button>
+    </div>
+  </template>
+
+  <script src="../vue/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        message: '现在是Vue-root中的data数据'
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          methods: {
+            btnClick() {
+              console.log(this.$parent);
+            }
+          },
+          data () {
+            return {
+              cmessage: '现在是cpn中的data数据'  
+            }
+          },
+          components: {
+            ccpn: {
+              template: '#ccpn',
+              methods: {
+                cbtnClick() {
+                  // console.log(this.$parent.cmessage);
+                  // console.log(this.$parent.$parent.message)
+                  console.log(this.$root)
+                }
+              }
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

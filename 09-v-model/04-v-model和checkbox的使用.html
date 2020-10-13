@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <!-- <label for="agreement">
+    <input type="checkbox" v-model="isAgreenment" id="agreement">同意协议
+  </label>
+  <h2>{{isAgreenment}}</h2>
+  <button :disabled="!isAgreenment">下一步</button> -->
+
+  <input v-model="hobbies" type="checkbox" value="basketball">basketball
+  <input v-model="hobbies"  type="checkbox" value="football">football
+  <input v-model="hobbies"  type="checkbox" value="ping-pang ball">ping-pang ball
+  <input v-model="hobbies"  type="checkbox" value="run">run
+  <input v-model="hobbies"  type="checkbox" value="swim">swim
+<h2>{{hobbies}}</h2>
+</div>
+
+
+<script src="../vue/vue.js"></script>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      message: '',
+      isAgreenment: false,// 单选框
+      hobbies: [] //多选框
+    }
+  })
+</script>
+</body>
+</html>

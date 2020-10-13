@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <div id="app">
+     <!-- 如果在监听事件中，我们不需要参数的话。那么写函数时就能够省略掉括号 -->
+      <!-- <button v-on:click="btn1Click">1</button> -->
+
+      <!-- 如果监听事件中的函数在创建时拥有参数，在使用时没有打上括号，则会传入浏览器
+      自己生成的event对象，如果加上括号，那么就会给出undifined的参数 -->
+      <!-- <button v-on:click="btn2Click">2</button> -->
+
+      <!-- 在监听事件中，如果我们即需要一个形参，也需要得event事件，那么我们需要使用一个
+      关键字 $event 来对事件进行绑定 -->
+      <button v-on:click="btn3Click(abc,$event)">3</button>
+      <button v-on:click="">4</button>
+   </div>
+  
+  
+   <script src="../vue/vue.js"></script>
+   <script>
+     const vm = new Vue({ 
+       el: "#app",
+       data: {
+        abc: 123,
+        },
+       methods: {
+        btn1Click() {
+          console.log('1111111');
+        },
+        btn2Click(abc) {
+          console.log(abc)
+        },
+        btn3Click(abc,event){
+          console.log('---------',abc,event)
+        }
+       }
+     })
+   </script>
+</body>
+</html>

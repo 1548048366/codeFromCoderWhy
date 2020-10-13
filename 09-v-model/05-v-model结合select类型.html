@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <label for="eatFruit">
+      <select name="abc" id="eatFruit" v-model="fruit">
+        <option value="苹果">苹果</option>
+        <option value="香蕉">香蕉</option>
+        <option value="无花果">无花果</option>
+        <option value="荔枝">荔枝</option>
+      </select>
+    </label>
+    <h2>您选择的水果是：{{fruit}}</h2>
+
+    <label for="eatFruit">
+      <select name="abc"  v-model="fruits" multiple>
+        <option value="苹果">苹果</option>
+        <option value="香蕉">香蕉</option>
+        <option value="无花果">无花果</option>
+        <option value="荔枝">荔枝</option>
+      </select>
+    </label>
+    <h2>您选择的水果是：{{fruits}}</h2>
+    
+
+</div>
+
+
+<script src="../vue/vue.js"></script>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      fruit: '香蕉',
+      fruits: []
+    }
+  })
+</script>
+</body>
+</html>

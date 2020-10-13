@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h2>现在的体重：{{weight}}</h2>
+    <hr>
+    <button @click="loseWeight()">start running</button>
+  </div>
+  
+  
+  <script src="../vue/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        weight:  150
+      },
+      methods: {
+        loseWeight() {
+          this.weight -= 10;
+        }
+      }
+    })
+  </script>
+</body>
+</html>

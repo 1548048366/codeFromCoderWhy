@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <cpn :number1="num1" 
+         :number2="num2"
+          @num1change="num1Change" 
+          @num2change="num2Change"/>
+  </div>
+  
+  <template id="cpn">
+    <div>
+      <h2>props: {{number1}}</h2>
+      <h2>cpn.data: {{dnumber1}}</h2>
+      <input type="text" :value="dnumber1" @input="num1Input">
+      <h2>props: {{number2}}</h2>
+      <h2>cpn.data: {{dnumber2}}</h2>
+      <input type="text" v-model="dnumber2" @input="num2Input">
+    </div>
+  </template>
+  <script src="../vue/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        num1: 1,
+        num2: 0
+      },
+      methods: {
+        num1Change(value) {
+          this.num1 = value;
+          console.log(value)
+        },
+        num2Change(value) {
+          this.num2 = value;
+        }
+      },
+      watch: {
+        num1(val, oldVal) {
+          console.log("num1: "+val, oldVal)
+        }
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          props: {
+            number1: Number,
+            number2: Number
+          },
+          data () {
+            return {
+              dnumber1: this.number1,
+              dnumber2: this.number2,
+            }
+          },
+          methods: {
+            num1Input(event) {
+              this.dnumber1 = parseInt(event.target.value);
+              this.dnumber2 = this.dnumber1 * 100;
+              // 这里发射的函数名 num1change 一定不能用驼峰命名法，至少目前为止别用，不然，emit失效
+              this.$emit('num1change',this.dnumber1);
+              // console.log(this.$emit('num1Change',this.dnumber1));
+              
+            },
+            num2Input(event) {
+              this.dnumber2 = parseInt(event.target.value);
+              this.$emit('num2change',this.dnumber2);
+              this.dnumber1 = this.dnumber2 / 100;
+            },
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

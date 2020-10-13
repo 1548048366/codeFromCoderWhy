@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <span v-if="isUser">
+    <label for="userName">用户类型</label>
+    <input type="text" id="userName" placeholder="用户类型">
+  </span>
+  <span v-else>
+    <label for="emilName">邮箱类型</label>
+    <input type="text" id="emilName" placeholder="邮箱类型">
+  </span>
+  <button @click="isUser = !isUser">类型切换</button>
+</div>
+
+
+<script src="../vue/vue.js"></script>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      // 啊西八，记住啊，对象里面一定要是冒号“ : ” 千万不能是 “ = ”
+      isUser: true,
+    },
+
+  })
+</script>
+</body>
+</html>

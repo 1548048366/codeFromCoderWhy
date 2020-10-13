@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+
+  <cpn1></cpn1>
+  <cpn1></cpn1>
+  <cpn1></cpn1>
+  <cpn1></cpn1>
+
+</div>
+
+<template id="cpnC1">
+  <div>
+    <h2>计数器：{{counter}}</h2>
+    <button @click="decrement">-</button>
+    <button @click="increment">+</button>
+  </div>
+</template>
+
+<script src="../vue/vue.js"></script>
+
+<script>
+  Vue.component('cpn1',{
+    template: "#cpnC1",
+    data() {
+      return {
+        counter: 0
+      }
+    },
+    methods: {
+      increment() {
+        this.counter++
+      },
+      decrement() {
+        this.counter--
+      }
+    }
+  })
+  const vm = new Vue({
+    el: "#app",
+    data: {
+ 
+    }
+  })
+</script>
+</body>
+</html>

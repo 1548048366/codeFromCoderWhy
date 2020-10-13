@@ -1,0 +1,16 @@
+table{
+  border: 1px solid rgb(128, 123, 123);
+  border-collapse: none;
+}
+thead{
+  background-color: rgb(184, 183, 183);
+  border: 1px solid black;
+  border-collapse: none;
+
+}
+td{
+  padding: 4px;
+  margin: none;
+  border: 1px solid black;
+  border-collapse: none;
+}

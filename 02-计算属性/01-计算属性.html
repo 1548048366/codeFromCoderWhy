@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{getFullName()}}</h2>
+    <h2>{{fullName}}</h2>
+  </div>
+
+
+
+  <script src="../vue/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        firstName: 'Wang',
+        lastName: 'Qiulin'
+      },
+      // 计算属性（）在调用时不用加上 “ （） ”，它的本质为属性。
+      computed: {
+        fullName: function() {
+          return this.firstName + this.lastName;
+        }
+      },
+      // 在methods里面的方法，在body中调用时，必须加上 “ （） ”
+      methods: {
+        getFullName: function() {
+          return this.firstName + this.lastName;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
